@@ -112,6 +112,7 @@
     - instances: "{{ hostvars['localhost'].instances }}"
     - container_registry: "{{ hostvars['localhost'].container_registry }}"
     - contrail_version_tag: "{{ hostvars['localhost'].contrail_version_tag }}"
+    - contrail_container_prefix: "{{ hostvars['localhost'].contrail_container_prefix }}"
     - roles: "{{ hostvars['localhost'].roles }}"
     - node_roles_dict: "{{ hostvars['localhost'].node_roles_dict }}"
     - api_server: "{{ hostvars['localhost'].api_server }}"
