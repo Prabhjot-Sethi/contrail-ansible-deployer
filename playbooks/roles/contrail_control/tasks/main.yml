@@ -85,11 +85,11 @@
 - name: update image
   shell: "docker pull {{ container_registry }}/{{ item }}:{{ contrail_version_tag }}"
   with_items:
-    - contrail-node-init
-    - contrail-nodemgr
-    - contrail-controller-control-control
-    - contrail-controller-control-named
-    - contrail-controller-control-dns
+    - "{{ contrail_container_prefix }}-node-init"
+    - "{{ contrail_container_prefix }}-nodemgr"
+    - "{{ contrail_container_prefix }}-controller-control-control"
+    - "{{ contrail_container_prefix }}-controller-control-named"
+    - "{{ contrail_container_prefix }}-controller-control-dns"
   when: contrail_configuration.UPDATE_IMAGES is undefined or contrail_configuration.UPDATE_IMAGES != false
 
 - name: "create contrail control compose file"

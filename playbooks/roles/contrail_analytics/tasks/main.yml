@@ -42,10 +42,10 @@
 - name: update contrail analytics images
   shell: "docker pull {{ container_registry }}/{{ item }}:{{ contrail_version_tag }}"
   with_items:
-    - contrail-node-init
-    - contrail-nodemgr
-    - contrail-analytics-api
-    - contrail-analytics-collector
+    - "{{ contrail_container_prefix }}-node-init"
+    - "{{ contrail_container_prefix }}-nodemgr"
+    - "{{ contrail_container_prefix }}-analytics-api"
+    - "{{ contrail_container_prefix }}-analytics-collector"
   when: contrail_configuration.UPDATE_IMAGES is undefined or contrail_configuration.UPDATE_IMAGES != false
 
 - name: create contrail analytics file

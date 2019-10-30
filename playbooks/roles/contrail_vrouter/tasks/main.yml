@@ -72,10 +72,10 @@
 - name: update image
   shell: "docker pull {{ container_registry }}/{{ item }}:{{ contrail_version_tag }}"
   with_items:
-    - contrail-node-init
-    - contrail-nodemgr
+    - "{{ contrail_container_prefix }}-node-init"
+    - "{{ contrail_container_prefix }}-nodemgr"
     - "{{ vrouter_kernel_init_img_name }}"
-    - contrail-vrouter-agent
+    - "{{ contrail_container_prefix }}-vrouter-agent"
   when:
     - contrail_configuration.UPDATE_IMAGES is undefined or contrail_configuration.UPDATE_IMAGES != false
     - roles[instance_name].vrouter.AGENT_MODE is undefined or roles[instance_name].vrouter.AGENT_MODE != 'dpdk'
@@ -94,11 +94,11 @@
 - name: update image for dpdk vrouter
   shell: "docker pull {{ container_registry }}/{{ item }}:{{ contrail_version_tag }}"
   with_items:
-    - contrail-node-init
-    - contrail-nodemgr
-    - contrail-vrouter-kernel-init-dpdk
-    - contrail-vrouter-agent-dpdk
-    - contrail-vrouter-agent
+    - "{{ contrail_container_prefix }}-node-init"
+    - "{{ contrail_container_prefix }}-nodemgr"
+    - "{{ contrail_container_prefix }}-vrouter-kernel-init-dpdk"
+    - "{{ contrail_container_prefix }}-vrouter-agent-dpdk"
+    - "{{ contrail_container_prefix }}-vrouter-agent"
   when:
     - contrail_configuration.UPDATE_IMAGES is undefined or contrail_configuration.UPDATE_IMAGES != false
     - roles[instance_name].vrouter.AGENT_MODE is defined

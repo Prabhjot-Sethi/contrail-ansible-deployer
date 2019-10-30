@@ -42,9 +42,9 @@
 - name: update image
   shell: "docker pull {{ container_registry }}/{{ item }}:{{ contrail_version_tag }}"
   with_items:
-    - contrail-node-init
-    - contrail-nodemgr
-    - contrail-tor-agent
+    - "{{ contrail_container_prefix }}-node-init"
+    - "{{ contrail_container_prefix }}-nodemgr"
+    - "{{ contrail_container_prefix }}-tor-agent"
   when: contrail_configuration.UPDATE_IMAGES is undefined or contrail_configuration.UPDATE_IMAGES != false
 
 - name: create contrail {{ toragent_name }} compose file

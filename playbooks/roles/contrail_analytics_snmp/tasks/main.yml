@@ -8,10 +8,10 @@
 - name: update contrail-snmp-collector and contrail-analytics-snmp-topology image
   shell: "docker pull {{ container_registry }}/{{ item }}:{{ contrail_version_tag }}"
   with_items:
-    - contrail-node-init
-    - contrail-nodemgr
-    - contrail-analytics-snmp-topology
-    - contrail-analytics-snmp-collector
+    - "{{ contrail_container_prefix }}-node-init"
+    - "{{ contrail_container_prefix }}-nodemgr"
+    - "{{ contrail_container_prefix }}-analytics-snmp-topology"
+    - "{{ contrail_container_prefix }}-analytics-snmp-collector"
 
 - name: create contrail analytics_snmp docker-compose file
   template:

@@ -43,12 +43,12 @@
 - name: update image
   shell: "docker pull {{ container_registry }}/{{ item }}:{{ contrail_version_tag }}"
   with_items:
-    - contrail-node-init
-    - contrail-nodemgr
-    - contrail-controller-config-api
-    - contrail-controller-config-svcmonitor
-    - contrail-controller-config-schema
-    - contrail-controller-config-devicemgr
+    - "{{ contrail_container_prefix }}-node-init"
+    - "{{ contrail_container_prefix }}-nodemgr"
+    - "{{ contrail_container_prefix }}-controller-config-api"
+    - "{{ contrail_container_prefix }}-controller-config-svcmonitor"
+    - "{{ contrail_container_prefix }}-controller-config-schema"
+    - "{{ contrail_container_prefix }}-controller-config-devicemgr"
   when: contrail_configuration.UPDATE_IMAGES is undefined or contrail_configuration.UPDATE_IMAGES != false
 
 - name: initialize use_external_tftp variable
